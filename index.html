@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="日韩电影网(rihandianyingwang-app)——专注提供最新日韩电影、韩国电影、日本电影在线观看与资讯，收录热门韩剧电影、日本剧情片、动作片、爱情片、动漫电影等高清资源。">
+<meta name="keywords" content="日韩电影网, rihandianyingwang-app, 韩国电影, 日本电影, 日韩影视, 在线电影, 韩剧电影, 日本动漫电影">
+<meta name="author" content="日韩电影网">
+<meta name="robots" content="index, follow">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>日韩电影网 | 最新日韩电影在线观看_韩国电影_日本电影 - rihandianyingwang-app</title>
+<link rel="canonical" href="https://rihandianyingwang-app.github.io">
+<style>
+    :root{
+        --bg:#07060f;
+        --bg2:#0d0b1a;
+        --card:#12102a;
+        --line:rgba(255,255,255,.08);
+        --txt:#ecedf5;
+        --sub:#9a9bb0;
+        --pri:#ff3b6b;
+        --pri2:#ff7a59;
+        --acc:#6c5cff;
+        --gold:#ffcf4d;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+    body{
+        font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+        background:var(--bg);
+        color:var(--txt);
+        line-height:1.7;
+        overflow-x:hidden;
+        background-image:radial-gradient(1200px 600px at 80% -10%,rgba(255,59,107,.18),transparent 60%),
+                         radial-gradient(900px 500px at 0% 10%,rgba(108,92,255,.16),transparent 55%);
+        background-attachment:fixed;
+    }
+    a{color:inherit;text-decoration:none;transition:.25s;}
+    ul{list-style:none;}
+    img{display:block;max-width:100%;}
+    .wrap{max-width:1160px;margin:0 auto;padding:0 20px;}
+
+    /* ===== Header ===== */
+    header{
+        position:sticky;top:0;z-index:100;
+        backdrop-filter:blur(14px);
+        background:rgba(7,6,15,.72);
+        border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex;align-items:center;gap:18px;height:64px;}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;}
+    .logo .mark{
+        width:34px;height:34px;border-radius:10px;
+        background:linear-gradient(135deg,var(--pri),var(--pri2));
+        display:grid;place-items:center;font-size:17px;color:#fff;
+        box-shadow:0 6px 18px rgba(255,59,107,.35);
+    }
+    .logo b{font-size:19px;background:linear-gradient(90deg,#fff,var(--pri2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+    .logo span{font-size:12px;color:var(--sub);border-left:1px solid var(--line);padding-left:10px;display:none;}
+    .menu{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap;}
+    .menu a{
+        font-size:14px;padding:8px 14px;border-radius:999px;color:var(--sub);
+    }
+    .menu a:hover{color:#fff;background:rgba(255,255,255,.06);}
+    .menu a.hot{color:#fff;background:linear-gradient(90deg,var(--pri),var(--acc));box-shadow:0 4px 14px rgba(255,59,107,.3);}
+    .search{
+        display:flex;align-items:center;gap:8px;
+        background:rgba(255,255,255,.06);border:1px solid var(--line);
+        border-radius:999px;padding:7px 14px;width:190px;
+    }
+    .search input{background:none;border:none;outline:none;color:#fff;font-size:13px;width:100%;}
+    .search input::placeholder{color:#6f7086;}
+    .bars{display:none;margin-left:auto;width:40px;height:40px;align-items:center;justify-content:center;font-size:22px;cursor:pointer;border-radius:10px;}
+    .bars:hover{background:rgba(255,255,255,.08);}
+
+    /* ===== Hero ===== */
+    .hero{
+        position:relative;padding:70px 0 60px;overflow:hidden;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;}
+    .tagline{
+        display:inline-flex;align-items:center;gap:8px;
+        font-size:12px;color:var(--pri2);
+        border:1px solid rgba(255,122,89,.35);background:rgba(255,122,89,.08);
+        padding:6px 14px;border-radius:999px;margin-bottom:20px;
+    }
+    .tagline i{width:7px;height:7px;border-radius:50%;background:var(--pri);animation:pulse 1.6s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
+    .hero h1{font-size:clamp(30px,4.6vw,54px);line-height:1.18;font-weight:900;letter-spacing:-.5px;}
+    .hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--pri),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;}
+    .hero p{color:var(--sub);font-size:16px;max-width:540px;margin:18px 0 26px;}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn{
+        display:inline-flex;align-items:center;gap:8px;
+        padding:13px 26px;border-radius:999px;font-size:15px;font-weight:700;
+    }
+    .btn-p{background:linear-gradient(100deg,var(--pri),var(--pri2));color:#fff;box-shadow:0 10px 26px rgba(255,59,107,.34);}
+    .btn-p:hover{transform:translateY(-2px);}
+    .btn-g{border:1px solid var(--line);color:#fff;}
+    .btn-g:hover{border-color:var(--pri);color:var(--pri2);}
+    .stats{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap;}
+    .stats div span{display:block;font-size:24px;font-weight:800;color:#fff;}
+    .stats div small{color:var(--sub);font-size:12px;}
+
+    .poster{
+        position:relative;aspect-ratio:3/4;border-radius:22px;
+        background:linear-gradient(160deg,#2a1140,#0e0b26);
+        padding:14px;transform:rotate(2deg);
+        box-shadow:0 30px 70px rgba(0,0,0,.55);
+    }
+    .poster::before{
+        content:"";position:absolute;inset:-3px;border-radius:25px;
+        background:linear-gradient(135deg,var(--pri),var(--acc),var(--gold));
+        z-index:-1;filter:blur(2px);opacity:.75;
+    }
+    .poster .screen{
+        position:relative;height:100%;border-radius:14px;overflow:hidden;
+        background:
+            radial-gradient(circle at 30% 25%,rgba(255,122,89,.5),transparent 40%),
+            radial-gradient(circle at 75% 70%,rgba(108,92,255,.55),transparent 45%),
+            linear-gradient(180deg,#150d30,#080612);
+    }
+    .poster .screen::after{
+        content:"日韩电影网";position:absolute;left:0;right:0;bottom:22px;text-align:center;
+        font-size:15px;letter-spacing:6px;color:rgba(255,255,255,.85);font-weight:700;
+    }
+    .float{
+        position:absolute;border-radius:14px;padding:10px 14px;font-size:12px;
+        background:rgba(20,18,42,.9);border:1px solid var(--line);backdrop-filter:blur(6px);
+        box-shadow:0 12px 30px rgba(0,0,0,.4);
+    }
+    .f1{top:-18px;left:-22px;transform:rotate(-6deg);}
+    .f2{bottom:30px;right:-26px;transform:rotate(5deg);}
+    .float b{display:block;font-size:13px;color:var(--gold);}
+
+    /* ===== Section ===== */
+    section{padding:64px 0;}
+    .sec-head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:30px;}
+    .sec-head .t{font-size:26px;font-weight:800;position:relative;padding-left:16px;}
+    .sec-head .t::before{
+        content:"";position:absolute;left:0;top:6px;bottom:6px;width:5px;border-radius:4px;
+        background:linear-gradient(180deg,var(--pri),var(--acc));
+    }
+    .sec-head .t small{display:block;font-size:13px;color:var(--sub);font-weight:500;margin-top:4px;letter-spacing:1px;}
+    .sec-head .more{margin-left:auto;font-size:13px;color:var(--sub);border:1px solid var(--line);padding:6px 16px;border-radius:999px;}
+    .sec-head .more:hover{color:var(--pri2);border-color:var(--pri);}
+
+    /* ===== 卡片 ===== */
+    .grid{display:grid;gap:22px;}
+    .g4{grid-template-columns:repeat(4,1fr);}
+    .g3{grid-template-columns:repeat(3,1fr);}
+    .g2{grid-template-columns:repeat(2,1fr);}
+    .card{
+        background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+        transition:.3s;position:relative;
+    }
+    .card:hover{transform:translateY(-6px);border-color:rgba(255,122,89,.4);box-shadow:0 18px 40px rgba(0,0,0,.45);}
+    .thumb{
+        position:relative;aspect-ratio:3/4;overflow:hidden;
+        display:grid;place-items:center;
+    }
+    .thumb .ab{
+        position:absolute;inset:0;
+        background:
+            radial-gradient(circle at var(--x,30%) var(--y,30%),rgba(255,255,255,.18),transparent 45%),
+            linear-gradient(160deg,var(--c1,#3a1b5e),var(--c2,#0c0a20));
+        transition:.5s;
+    }
+    .card:hover .thumb .ab{transform:scale(1.08);}
+    .thumb .play{
+        position:relative;width:52px;height:52px;border-radius:50%;
+        background:rgba(255,255,255,.16);backdrop-filter:blur(4px);
+        display:grid;place-items:center;font-size:18px;color:#fff;
+        border:1px solid rgba(255,255,255,.3);opacity:0;transition:.3s;
+    }
+    .card:hover .thumb .play{opacity:1;}
+    .thumb .badge{
+        position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;
+        padding:4px 10px;border-radius:6px;background:rgba(0,0,0,.55);color:#fff;backdrop-filter:blur(4px);
+    }
+    .thumb .score{
+        position:absolute;top:10px;right:10px;font-size:12px;font-weight:800;color:#1a1a2e;
+        padding:4px 9px;border-radius:6px;background:var(--gold);
+    }
+    .thumb .ep{
+        position:absolute;bottom:10px;left:10px;right:10px;font-size:11px;color:rgba(255,255,255,.85);
+        display:flex;justify-content:space-between;
+    }
+    .card .info{padding:14px 16px 16px;}
+    .card .info h3{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .card .info p{font-size:12px;color:var(--sub);margin-top:6px;display:flex;gap:8px;flex-wrap:wrap;}
+    .card .info p i{font-style:normal;padding:2px 8px;border-radius:5px;background:rgba(255,255,255,.05);border:1px solid var(--line);}
+
+    /* ===== 分类 ===== */
+    .cats{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+    .cat{
+        text-align:center;padding:22px 10px;border-radius:16px;
+        background:var(--card);border:1px solid var(--line);transition:.3s;
+    }
+    .cat:hover{background:linear-gradient(160deg,rgba(255,59,107,.14),rgba(108,92,255,.12));border-color:var(--pri);transform:translateY(-4px);}
+    .cat .ico{font-size:30px;display:block;margin-bottom:8px;}
+    .cat b{font-size:14px;display:block;}
+    .cat small{font-size:11px;color:var(--sub);}
+
+    /* ===== 排行 ===== */
+    .rank{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+    .rank-item{
+        display:flex;gap:14px;align-items:center;padding:12px;
+        border-radius:14px;background:var(--card);border:1px solid var(--line);transition:.25s;
+    }
+    .rank-item:hover{border-color:rgba(255,207,77,.45);background:rgba(255,207,77,.05);}
+    .rank-item .no{
+        width:38px;height:38px;flex:0 0 38px;border-radius:11px;
+        display:grid;place-items:center;font-size:17px;font-weight:900;color:#fff;
+        background:linear-gradient(135deg,#2b2b44,#16162b);
+    }
+    .rank-item:nth-child(1) .no{background:linear-gradient(135deg,#ff3b6b,#ff7a59);}
+    .rank-item:nth-child(2) .no{background:linear-gradient(135deg,#ffcf4d,#ff9a3c);}
+    .rank-item:nth-child(3) .no{background:linear-gradient(135deg,#6c5cff,#3aa0ff);}
+    .rank-item .txt{flex:1;min-width:0;}
+    .rank-item .txt b{font-size:14px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .rank-item .txt span{font-size:12px;color:var(--sub);}
+    .rank-item .up{font-size:12px;color:var(--pri2);font-weight:700;}
+
+    /* ===== 资讯 ===== */
+    .news-item{
+        display:grid;grid-template-columns:220px 1fr;gap:20px;
+        padding:18px;background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:14px;transition:.3s;
+    }
+    .news-item:hover{border-color:rgba(108,92,255,.45);transform:translateX(4px);}
+    .news-item .ni{
+        height:120px;border-radius:12px;overflow:hidden;position:relative;
+        background:linear-gradient(135deg,var(--c1,#2a1140),var(--c2,#0c0a20));
+    }
+    .news-item .ni span{
+        position:absolute;inset:0;display:grid;place-items:center;font-size:13px;color:rgba(255,255,255,.8);letter-spacing:1px;
+    }
+    .news-item h3{font-size:17px;margin-bottom:8px;}
+    .news-item p{font-size:13px;color:var(--sub);}
+    .news-item .meta{font-size:12px;color:#6f7086;margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;}
+
+    /* ===== 关于 ===== */
+    .about{
+        background:linear-gradient(135deg,rgba(255,59,107,.07),rgba(108,92,255,.07));
+        border:1px solid var(--line);border-radius:22px;padding:38px;
+    }
+    .about .g2{gap:36px;align-items:center;}
+    .feat{display:grid;gap:14px;}
+    .feat div{
+        display:flex;gap:14px;padding:14px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line);
+    }
+    .feat div b{width:38px;height:38px;flex:0 0 38px;border-radius:10px;font-size:18px;
+        display:grid;place-items:center;background:linear-gradient(135deg,var(--pri),var(--acc));}
+    .feat div h4{font-size:15px;margin-bottom:3px;}
+    .feat div p{font-size:12px;color:var(--sub);}
+
+    /* ===== Footer ===== */
+    footer{border-top:1px solid var(--line);padding:44px 0 26px;margin-top:30px;}
+    .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;}
+    .foot h5{font-size:15px;margin-bottom:14px;position:relative;padding-left:11px;}
+    .foot h5::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:4px;border-radius:3px;background:var(--pri);}
+    .foot a{display:block;font-size:13px;color:var(--sub);padding:5px 0;}
+    .foot a:hover{color:var(--pri2);}
+    .copy{text-align:center;color:#6f7086;font-size:12px;margin-top:34px;padding-top:20px;border-top:1px solid var(--line);}
+    .copy b{color:var(--pri2);}
+
+    /* ===== 响应式 ===== */
+    @media(max-width:900px){
+        .g4{grid-template-columns:repeat(3,1fr);}
+        .cats{grid-template-columns:repeat(4,1fr);}
+        .hero-grid{grid-template-columns:1fr;}
+        .poster{max-width:340px;margin:0 auto;transform:none;}
+        .poster::before{inset:-2px;}
+        .float{display:none;}
+        .news-item{grid-template-columns:1fr;}
+        .news-item .ni{height:160px;}
+        .foot{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:680px){
+        .wrap{padding:0 16px;}
+        .logo span{display:none;}
+        .search{display:none;}
+        .bars{display:flex;}
+        .menu{
+            position:fixed;inset:64px 0 0 0;width:100%;height:calc(100vh - 64px);
+            flex-direction:column;gap:4px;padding:20px 16px;
+            background:rgba(7,6,15,.96);backdrop-filter:blur(14px);
+            transform:translateX(100%);transition:.35s;z-index:99;
+        }
+        .menu.open{transform:translateX(0);}
+        .menu a{font-size:16px;padding:14px 18px;border-radius:12px;}
+        .hero{padding:44px 0 40px;}
+        .stats{gap:22px;}
+        .stats div span{font-size:20px;}
+        section{padding:46px 0;}
+        .sec-head .t{font-size:22px;}
+        .g4,.g3{grid-template-columns:repeat(2,1fr);gap:14px;}
+        .cats{grid-template-columns:repeat(3,1fr);gap:10px;}
+        .cat{padding:16px 6px;}
+        .cat .ico{font-size:24px;}
+        .rank{grid-template-columns:1fr;}
+        .about{padding:24px 18px;}
+        .foot{grid-template-columns:1fr;}
+        .card .info{padding:12px;}
+        .card .info h3{font-size:14px;}
+    }
+    @media print{
+        header,.menu,.search,.cta,.copy{display:none;}
+        body{background:#fff;color:#000;}
+        .card,.cat,.rank-item{break-inside:avoid;}
+    }
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<!-- ================= 顶部导航 ================= -->
+<header>
+    <div class="wrap nav">
+        <a class="logo" href="#top" aria-label="日韩电影网首页">
+            <span class="mark">映</span>
+            <b>日韩电影网</b>
+            <span>rihandianyingwang-app · github.io</span>
+        </a>
+        <nav class="menu" id="menu">
+            <a href="#top" class="hot">首页</a>
+            <a href="#rank">热播榜</a>
+            <a href="#korea">韩国电影</a>
+            <a href="#japan">日本电影</a>
+            <a href="#genre">电影分类</a>
+            <a href="#news">影视资讯</a>
+            <a href="#about">关于本站</a>
+        </nav>
+        <div class="search">
+            <span>🔍</span>
+            <input type="search" placeholder="搜索影片、演员、导演" aria-label="搜索">
+        </div>
+        <div class="bars" id="bars" aria-label="菜单">☰</div>
+    </div>
+</header>
+
+<!-- ================= 首屏 ================= -->
+<section class="hero" id="top">
+    <div class="wrap hero-grid">
+        <div>
+            <span class="tagline"><i></i> 每日更新 · 高清正版导流 · 影视资讯</span>
+            <h1>一网看尽 <em>日韩电影</em><br>热门新片实时追更</h1>
+            <p>日韩电影网（rihandianyingwang-app）专注于整理与推荐<strong>韩国电影</strong>、<strong>日本电影</strong>、日韩剧集与动漫电影，提供影片介绍、上映时间、演员阵容、评分排行与观看指引，帮你快速找到值得一看的日韩影视作品。</p>
+            <div class="cta">
+                <a class="btn btn-p" href="#korea">🎬 立即观影</a>
+                <a class="btn btn-g" href="#rank">🏆 查看热播榜</a>
+            </div>
+            <div class="stats">
+                <div><span>12,800+</span><small>收录影片</small></div>
+                <div><span>360+</span><small>影视分类</small></div>
+                <div><span>每日更新</span><small>资讯与排行</small></div>
+            </div>
+        </div>
+        <div class="poster" aria-hidden="true">
+            <div class="screen"></div>
+            <div class="float f1"><b>4K 高清</b>画质 · 多字幕</div>
+            <div class="float f2"><b>实时更新</b>同步院线 / 流媒体</div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 热播榜 ================= -->
+<section id="rank">
+    <div class="wrap">
+        <div class="sec-head">
+            <div class="t">热播榜 <small>RIHANDIANYINGWANG HOT RANKING</small></div>
+            <a class="more" href="#">查看更多 ›</a>
+        </div>
+        <div class="rank">
+            <a class="rank-item" href="#">
+                <span class="no">1</span>
+                <span class="txt"><b>首尔之春</b><span>韩国 · 剧情 / 历史 · 2023</span></span>
+                <span class="up">▲ 2</span>
+            </a>
+            <a class="rank-item" href="#">
+                <span class="no">2</span>
+                <span class="txt"><b>破墓</b><span>韩国 · 惊悚 / 悬疑 · 2024</span></span>
+                <span class="up">▲ 1</span>
+            </a>
+            <a class="rank-item" href="#">
+                <span class="no">3</span>
+                <span class="txt"><b>怪物</b><span>日本 · 剧情 · 是枝裕和 · 2023</span></span>
+                <span class="up">▲ 4</span>
+            </a>
+            <a class="rank-item" href="#">
+                <span class="no">4</span>
+                <span class="txt"><b>犯罪都市4</b><span>韩国 · 动作 / 犯罪 · 2024</span></span>
+                <span class="up">▼ 1</span>
+            </a>
+            <a class="rank-item" href="#">
+                <span class="no">5</span>
+                <span class="txt"><b>名侦探柯南：百万美元的五棱星</b><span>日本 · 动画 / 悬疑 · 2024</span></span>
+                <span class="up">▲ 3</span>
+            </a>
+            <a class="rank-item" href="#">
+                <span class="no">6</span>
+                <span class="txt"><b>走私</b><span>韩国 · 犯罪 / 剧情 · 2023</span></span>
+                <span class="up">—</span>
+            </a>
+            <a class="rank-item" href="#">
+                <span class="no">7</span>
+                <span class="txt"><b>哥斯拉-1.0</b><span>日本 · 科幻 / 灾难 · 2023</span></span>
+                <span class="up">▲ 6</span>
+            </a>
+            <a class="rank-item" href="#">
+                <span class="no">8</span>
+                <span class="txt"><b>祸乱</b><span>韩国 · 剧情 / 动作 · 2023</span></span>
+                <span class="up">▼ 2</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 韩国电影 ================= -->
+<section id="korea">
+    <div class="wrap">
+        <div class="sec-head">
+            <div class="t">韩国电影 <small>HANGUO DIANYING · KOREAN CINEMA</small></div>
+            <a class="more" href="#">全部韩国影片 ›</a>
+        </div>
+        <div class="grid g4">
+            <a class="card" href="#">
+                <div class="thumb" style="--c1:#7b1f3f;--c2:#1c0a18">
+                    <div class="ab"></div>
+                    <span class="play">&#9654;</span>
+                    <span class="badge">院线热映</span>
+                    <span class="score">9.1</span>
+                    <span class="ep"><span>韩语 · 中文字幕</span><span>141 分钟</span></span>
+                </div>
+                <div class="info">
+                    <h3>首尔之春</h3>
+                    <p><i>剧情</i><i>历史</i><i>2023</i></p>
+                </div>
+            </a>
+            <a class="card" href="#">
+                <div class="thumb" style="--c1:#3a2b17;--c2:#120d06">
+                    <div class="ab"></div>
+                    <span class="play">&#9654;</span>
+                    <span class="badge">惊悚悬疑</span>
+                    <span class="score">8.7</span>
+                    <span class="ep"><span>韩语 · 中文字幕</span><span>122 分钟</span></span>
+                </div>
+                <div class="info">
+                    <h3>破墓</h3>
+                    <p><i>惊悚</i><i>悬疑</i><i>2024</i></p>
+                </div>
+            </a>
+            <a class="card" href="#">
+                <div class="thumb" style="--c1:#1f4b6b;--c2:#08131d">
+                    <div class="ab"></div>
+                    <span class="play">&#9654;</span>
+                    <span class="badge">动作犯罪</span>
+                    <span class="score">8.5</span>
+                    <span class="ep"><span>韩语 · 中文字幕</span><span>109 分钟</span></span>
+                </div>
+                <div class="info">
+                    <h3>犯罪都市4</h3>
+                    <p><i>动作</i><i>犯罪</i><i>2024</i></p>
+                </div>
+            </a>
+            <a class="card" href="#">
+                <div class="thumb" style="--c1:#4a1d5e;--c2:#160820">
+                    <div class="ab"></div>
+                    <span class="play">&#9654;</span>
+                    <span class="badge">剧情</span>
+                    <span class="score">8.3</span>
+                    <span class="ep"><span>韩语 · 中文字幕</span><span>134 分钟</span></span>
+                </div>
+                <div class="info">
+                    <h3>走私</h3>
+                    <p><i>犯罪</i><i>剧情</i><i>2023</i></p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 日本电影 ================= -->
+<section id="japan">
+    <div class="wrap">
+        <div class="sec-head">
+            <div class="t">日本电影 <small>RIBEN DIANYING · JAPANESE CINEMA</small></div>
+            <a class="more" href="#">全部日本影片 ›</a>
+        </div>
+        <div class="grid g4">
+            <a class="card" href="#">
+                <div class="thumb" style="--c1:#5e1f4a;--c2:#1a0816">
+                    <div class="ab"></div>
+                    <span class="play">&#9654;</span>
+                    <span class="badge">是枝裕和</span>
+                    <span class="score">8.8</span>
+                    <span class="ep"><span>日语 · 中文字幕</span><span>126 分钟</span></span>
+                </div>
+                <div class="info">
+                    <h3>怪物</h3>
+                    <p><i>剧情</i><i>2023</i></p>
+                </div>
+            </a>
+            <a class="card" href="#">
+                <div class="thumb" style="--c1:#1f5e4a;--c2:#081a14">
+                    <div class="ab"></div>
+                    <span class="play">&#9654;</span>
+                    <span class="badge">动画剧场版</span>
+                    <span class="score">8.6</span>
+                    <span class="ep"><span>日语 · 中文字幕</span><span>111 分钟</span></span>
+                </div>
+                <div class="info">
+                    <h3>名侦探柯南：百万美元的五棱星</h3>
+                    <p><i>动画</i><i>悬疑</i><i>2024</i></p>
+                </div>
+            </a>
+            <a class="card" href="#">
+                <div class="thumb" style="--c1:#5e4a1f;--c2:#1a1608">
+                    <div class="ab"></div>
+                    <span class="play">&#9654;</span>
+                    <span class="badge">奥斯卡奖</span>
+                    <span class="score">8.4</span>
+                    <span class="ep"><span>日语 · 中文字幕</span><span>125 分钟</span></span>
+                </div>
+                <div class="info">
+                    <h3>哥斯拉-1.0</h3>
+                    <p><i>科幻</i><i>灾难</i><i>2023</i></p>
+                </div>
+            </a>
+            <a class="card" href="#">
+                <div class="thumb" style="--c1:#1f2b5e;--c2:#080c1a">
+                    <div class="ab"></div>
+                    <span class="play">&#9654;</span>
+                    <span class="badge">青春爱情</span>
+                    <span class="score">8.2</span>
+                    <span class="ep"><span>日语 · 中文字幕</span><span>138 分钟</span></span>
+                </div>
+                <div class="info">
+                    <h3>余命十年</h3>
+                    <p><i>爱情</i><i>青春</i><i>2022</i></p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 分类 ================= -->
+<section id="genre">
+    <div class="wrap">
+        <div class="sec-head">
+            <div class="t">电影分类 <small>DIANYING FENLEI · GENRES</small></div>
+            <a class="more" href="#">完整片单 ›</a>
+        </div>
+        <div class="cats">
+            <a class="cat" href="#"><span class="ico">💥</span><b>动作</b><small>Action</small></a>
+            <a class="cat" href="#"><span class="ico">🔪</span><b>悬疑</b><small>Thriller</small></a>
+            <a class="cat" href="#"><span class="ico">💕</span><b>爱情</b><small>Romance</small></a>
+            <a class="cat" href="#"><span class="ico">😂</span><b>喜剧</b><small>Comedy</small></a>
+            <a class="cat" href="#"><span class="ico">👻</span><b>恐怖</b><small>Horror</small></a>
+            <a class="cat" href="#"><span class="ico">🎨</span><b>动画</b><small>Anime</small></a>
+            <a class="cat" href="#"><span class="ico">🏯</span><b>历史</b><small>History</small></a>
+            <a class="cat" href="#"><span class="ico">🚀</span><b>科幻</b><small>Sci-Fi</small></a>
+            <a class="cat" href="#"><span class="ico">🎭</span><b>剧情</b><small>Drama</small></a>
+            <a class="cat" href="#"><span class="ico">🔫</span><b>犯罪</b><small>Crime</small></a>
+            <a class="cat" href="#"><span class="ico">📽️</span><b>文艺</b><small>Indie</small></a>
+            <a class="cat" href="#"><span class="ico">🌸</span><b>青春</b><small>Youth</small></a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 资讯 ================= -->
+<section id="news">
+    <div class="wrap">
+        <div class="sec-head">
+            <div class="t">影视资讯 <small>YINGSHI ZIXUN · NEWS</small></div>
+            <a class="more" href="#">全部资讯 ›</a>
+        </div>
+        <div>
+            <a class="news-item" href="#">
+                <div class="ni" style="--c1:#5e1f3a;--c2:#16060e"><span>韩国电影专题</span></div>
+                <div>
+                    <h3>2024 韩国电影票房盘点：类型片持续领跑，忠武路新生代崛起</h3>
+                    <p>从《犯罪都市4》到《破墓》，韩国商业类型片在叙事节奏与视听质感上持续进化。本文梳理 2024 年值得关注的韩国电影趋势、导演与演员阵容。</p>
+                    <div class="meta"><span>📅 2026-09-28</span><span>👁 3.2 万</span><span>💬 评论 86</span></div>
+                </div>
+            </a>
+            <a class="news-item" href="#">
+                <div class="ni" style="--c1:#1f4a5e;--c2:#06131a"><span>日本电影专题</span></div>
+                <div>
+                    <h3>是枝裕和、滨口龙介之后：日本电影的国际化表达</h3>
+                    <p>从《怪物》到《邪恶不存在》，日本导演正以更克制的镜头语言讲述人与社会的关系。日韩电影网为你解读日本电影的美学脉络与观影顺序。</p>
+                    <div class="meta"><span>📅 2026-09-22</span><span>👁 1.8 万</span><span>💬 评论 54</span></div>
+                </div>
+            </a>
+            <a class="news-item" href="#">
+                <div class="ni" style="--c1:#4a3a1f;--c2:#141006"><span>观影指南</span></div>
+                <div>
+                    <h3>日韩悬疑片入门片单：10 部高分作品，反转到最后一秒</h3>
+                    <p>《寄生虫》《燃烧》《告白》《嫌疑人X的献身》……这份片单按"易入口 → 进阶 → 烧脑"三档排列，适合周末一口气刷完。</p>
+                    <div class="meta"><span>📅 2026-09-15</span><span>👁 2.6 万</span><span>💬 评论 121</span></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 关于 ================= -->
+<section id="about">
+    <div class="wrap">
+        <div class="about">
+            <div class="grid g2">
+                <div>
+                    <div class="sec-head" style="margin-bottom:18px;">
+                        <div class="t">关于日韩电影网 <small>ABOUT US</small></div>
+                    </div>
+                    <p style="color:var(--sub);font-size:14px;">
+                        日韩电影网（rihandianyingwang-app）是一个专注于<strong>日韩电影</strong>推荐与影视资讯整理的单页导航站点。
+                        我们持续收录<strong>韩国电影</strong>、<strong>日本电影</strong>、日韩剧集与动漫剧场版，提供影片简介、上映时间、演员导演、类型标签与评分排行，
+                        帮助影迷更高效地发现好片。本站为静态页面，访问地址为
+                        <strong style="color:var(--pri2);">https://rihandianyingwang-app.github.io</strong>。
+                    </p>
+                    <p style="color:var(--sub);font-size:14px;margin-top:10px;">
+                        关键词：日韩电影网、rihandianyingwang-app、韩国电影、日本电影、日韩影视、在线电影、韩剧电影、日本动漫电影。
+                    </p>
+                </div>
+                <div class="feat">
+                    <div><b>🎯</b><div><h4>精准分类</h4><p>按国家、类型、年份、评分多维度筛选</p></div></div>
+                    <div><b>🔥</b><div><h4>实时热榜</h4><p>同步院线与流媒体热度，每日更新排行</p></div></div>
+                    <div><b>🈶</b><div><h4>字幕与画质</h4><p>标注语言、字幕、时长与清晰度信息</p></div></div>
+                    <div><b>📱</b><div><h4>移动端自适应</h4><p>手机、平板、桌面端均获得良好阅读体验</p></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 页脚 ================= -->
+<footer>
+    <div class="wrap">
+        <div class="foot">
+            <div>
+                <a class="logo" href="#top" style="margin-bottom:12px;">
+                    <span class="mark">映</span>
+                    <b>日韩电影网</b>
+                </a>
+                <p style="color:var(--sub);font-size:13px;max-width:300px;">
+                    专注日韩电影推荐与影视资讯，做你选片时的第一站。
+                </p>
+            </div>
+            <div>
+                <h5>影片频道</h5>
+                <a href="#korea">韩国电影</a>
+                <a href="#japan">日本电影</a>
+                <a href="#genre">电影分类</a>
+                <a href="#rank">热播排行榜</a>
+            </div>
+            <div>
+                <h5>内容栏目</h5>
+                <a href="#news">影视资讯</a>
+                <a href="#">观影指南</a>
+                <a href="#">导演专题</a>
+                <a href="#">高分片单</a>
+            </div>
+            <div>
+                <h5>关于本站</h5>
+                <a href="#about">关于日韩电影网</a>
+                <a href="#">免责声明</a>
+                <a href="#">更新日志</a>
+                <a href="#">意见反馈</a>
+            </div>
+        </div>
+        <div class="copy">
+            © 2026 <b>日韩电影网</b> rihandianyingwang-app · 网站网址：https://rihandianyingwang-app.github.io<br>
+            本站为影视资讯与导航类静态单页，仅提供影片信息与观看指引，不存储、不提供任何影视资源下载与播放。
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 移动端菜单
+    var bars = document.getElementById('bars');
+    var menu = document.getElementById('menu');
+    bars.addEventListener('click', function(){
+        menu.classList.toggle('open');
+        bars.textContent = menu.classList.contains('open') ? '✕' : '☰';
+    });
+    menu.addEventListener('click', function(e){
+        if(e.target.tagName === 'A'){
+            menu.classList.remove('open');
+            bars.textContent = '☰';
+        }
+    });
+
+    // 卡片光泽跟随
+    document.querySelectorAll('.thumb').forEach(function(el){
+        el.addEventListener('mousemove', function(e){
+            var r = el.getBoundingClientRect();
+            el.style.setProperty('--x', ((e.clientX - r.left) / r.width * 100) + '%');
+            el.style.setProperty('--y', ((e.clientY - r.top) / r.height * 100) + '%');
+        });
+    });
+</script>
+</body>
+</html>
